@@ -1,0 +1,43 @@
+class Solution{
+    public:
+    Node* deleteMid(Node* head)
+    {
+
+        int count = 0;
+        Node* current = head;
+        
+        while (current != nullptr) 
+        {
+            count++;
+            current = current->next;
+        }
+        
+        int mid = count / 2;
+        
+        current = head;
+        Node* prev = nullptr;
+        
+        for (int i = 0; i < mid; i++) 
+        {
+            prev = current;
+            current = current->next;
+        }
+        if(current==NULL)
+        {
+            return head;
+        }
+        
+        if (prev != nullptr) 
+        {
+            prev->next = current->next;
+        } 
+        else 
+        {
+            head = current->next;
+        }
+        
+        delete current;
+        
+        return head;
+    }
+};
